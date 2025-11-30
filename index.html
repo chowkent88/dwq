@@ -97,28 +97,42 @@
             padding: 0 15px;
         }
         
-        /* Main Content - FIXED TWO-COLUMN LAYOUT */
+        /* Main Content - COMBINED LAYOUT */
         .main-content {
-            display: grid;
-            grid-template-columns: 1fr;
+            display: flex;
+            flex-direction: column;
             gap: 25px;
             padding: 30px 0;
         }
         
         /* Window Types */
         .window-types {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            width: 100%;
+        }
+        
+        .window-types h2 {
+            color: #1a3a5f;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e9ecef;
+            font-size: 1.4rem;
+        }
+        
+        .window-categories {
             display: grid;
             grid-template-columns: 1fr;
             gap: 20px;
-            margin-bottom: 25px;
         }
         
         .window-category {
-            background: white;
+            background: #f8f9fa;
             border-radius: 8px;
             padding: 20px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
-            width: 100%;
+            border: 1px solid #e9ecef;
         }
         
         .window-category h3 {
@@ -172,8 +186,8 @@
             margin-top: 8px;
         }
         
-        /* Calculator Section */
-        .calculator {
+        /* Combined Measurements and Quote Container */
+        .calculator-quote-container {
             background: white;
             border-radius: 8px;
             padding: 25px;
@@ -181,12 +195,34 @@
             width: 100%;
         }
         
-        .calculator h2 {
+        .calculator-quote-container h2 {
             color: #1a3a5f;
             margin-bottom: 20px;
             padding-bottom: 12px;
             border-bottom: 1px solid #e9ecef;
             font-size: 1.4rem;
+        }
+        
+        .calculator-quote-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        /* Measurements Section */
+        .measurements-container {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .measurements-container h3 {
+            color: #1a3a5f;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e9ecef;
+            font-size: 1.3rem;
         }
         
         .measurements {
@@ -259,21 +295,20 @@
         }
         
         /* Quote Section */
-        .quote-section {
-            background: white;
+        .quote-container {
+            background: #f8f9fa;
             border-radius: 8px;
-            padding: 20px 15px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
-            width: 100%;
+            padding: 20px;
+            border: 1px solid #e9ecef;
             overflow-x: auto;
         }
         
-        .quote-section h2 {
+        .quote-container h3 {
             color: #1a3a5f;
             margin-bottom: 15px;
-            padding-bottom: 12px;
+            padding-bottom: 10px;
             border-bottom: 1px solid #e9ecef;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
         }
         
         table {
@@ -284,9 +319,9 @@
         }
         
         th, td {
-            padding: 6px 3px;
+            padding: 8px 4px;
             border-bottom: 1px solid #e9ecef;
-            font-size: 0.75rem;
+            font-size: 0.85rem;
         }
         
         th {
@@ -367,20 +402,21 @@
         
         .total-cost {
             text-align: center;
-            padding: 15px;
-            background: #f8f9fa;
+            padding: 20px;
+            background: white;
             border-radius: 8px;
-            margin-top: 15px;
+            margin-top: 20px;
+            border: 1px solid #e9ecef;
         }
         
         .total-cost h3 {
             color: #1a3a5f;
             margin-bottom: 10px;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
         }
         
         .cost {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: bold;
             color: #e74c3c;
             word-break: break-word;
@@ -389,11 +425,12 @@
         
         .empty-quote {
             text-align: center;
-            padding: 25px;
+            padding: 30px;
             color: #6c757d;
             font-style: italic;
-            background: #f8f9fa;
+            background: white;
             border-radius: 6px;
+            border: 1px solid #e9ecef;
         }
         
         /* Footer */
@@ -436,7 +473,7 @@
             font-size: 0.85rem;
         }
         
-        /* Responsive Design - FIXED TWO-COLUMN LAYOUT */
+        /* Responsive Design */
         /* Tablet Styles */
         @media (min-width: 768px) {
             .container {
@@ -459,15 +496,21 @@
                 font-size: 1.1rem;
             }
             
-            /* TWO-COLUMN LAYOUT FOR TABLET AND DESKTOP */
-            .main-content {
+            /* Window categories as two columns on tablet/desktop */
+            .window-categories {
                 grid-template-columns: 1fr 1fr;
-                gap: 30px;
+                gap: 20px;
             }
             
             .series-options {
                 grid-template-columns: 1fr 1fr;
                 gap: 15px;
+            }
+            
+            /* Calculator and quote as two columns on tablet/desktop */
+            .calculator-quote-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
             }
             
             .measurements {
@@ -478,13 +521,9 @@
                 grid-template-columns: 1fr 1fr;
             }
             
-            .quote-section {
-                padding: 25px;
-            }
-            
             th, td {
-                padding: 8px 4px;
-                font-size: 0.8rem;
+                padding: 10px 6px;
+                font-size: 0.9rem;
             }
         }
         
@@ -500,10 +539,6 @@
             
             .hero p {
                 font-size: 1.2rem;
-            }
-            
-            th, td {
-                font-size: 0.85rem;
             }
         }
         
@@ -526,13 +561,13 @@
                 font-size: 1.6rem;
             }
             
-            .calculator, .window-category, .quote-section {
-                padding: 15px 10px;
+            .window-types, .calculator-quote-container, .window-category, .measurements-container, .quote-container {
+                padding: 15px;
             }
             
             th, td {
-                padding: 4px 2px;
-                font-size: 0.7rem;
+                padding: 6px 3px;
+                font-size: 0.75rem;
             }
             
             .container {
@@ -575,9 +610,10 @@
     <!-- Main Content -->
     <div class="container">
         <div class="main-content">
-            <!-- Left Column - Calculator -->
-            <div class="calculator-column">
-                <div class="window-types">
+            <!-- Window Types Container -->
+            <div class="window-types">
+                <h2>Select Your Window Series</h2>
+                <div class="window-categories">
                     <!-- Vinyl Window Options -->
                     <div class="window-category">
                         <h3>Vinyl Window Series</h3>
@@ -632,59 +668,66 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="calculator">
-                    <h2>Window Measurements</h2>
-                    
-                    <div class="measurements">
-                        <div class="input-group">
-                            <label for="width">Width (meters)</label>
-                            <input type="number" id="width" min="0.1" step="0.01" value="2.00">
+            </div>
+            
+            <!-- Combined Measurements and Quote Container -->
+            <div class="calculator-quote-container">
+                <h2>Calculate Your Quote</h2>
+                <div class="calculator-quote-content">
+                    <!-- Measurements Section -->
+                    <div class="measurements-container">
+                        <h3>Window Measurements</h3>
+                        
+                        <div class="measurements">
+                            <div class="input-group">
+                                <label for="width">Width (meters)</label>
+                                <input type="number" id="width" min="0.1" step="0.01" value="2.00">
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="height">Height (meters)</label>
+                                <input type="number" id="height" min="0.1" step="0.01" value="2.00">
+                            </div>
                         </div>
                         
                         <div class="input-group">
-                            <label for="height">Height (meters)</label>
-                            <input type="number" id="height" min="0.1" step="0.01" value="2.00">
+                            <label for="quantity">Quantity</label>
+                            <input type="number" id="quantity" min="1" value="1">
+                        </div>
+                        
+                        <button class="btn btn-success" id="add-window">
+                            <i class="fas fa-plus-circle"></i> Add Window to Quote
+                        </button>
+                        <button class="btn btn-danger" id="clear-all">
+                            <i class="fas fa-trash-alt"></i> Clear All Windows
+                        </button>
+                    </div>
+                    
+                    <!-- Quote Section -->
+                    <div class="quote-container">
+                        <h3>Your Window Quote</h3>
+                        
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="action-col"></th>
+                                    <th class="series-col">Series</th>
+                                    <th class="area-col">Area</th>
+                                    <th class="quantity-col">Qty</th>
+                                    <th class="price-col">Price/m²</th>
+                                    <th class="total-col">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="quote-items">
+                                <!-- Window items will be added here dynamically -->
+                            </tbody>
+                        </table>
+                        
+                        <div class="total-cost">
+                            <h3>Total Estimated Cost</h3>
+                            <div class="cost" id="total-cost">$0.00</div>
                         </div>
                     </div>
-                    
-                    <div class="input-group">
-                        <label for="quantity">Quantity</label>
-                        <input type="number" id="quantity" min="1" value="1">
-                    </div>
-                    
-                    <button class="btn btn-success" id="add-window">
-                        <i class="fas fa-plus-circle"></i> Add Window to Quote
-                    </button>
-                    <button class="btn btn-danger" id="clear-all">
-                        <i class="fas fa-trash-alt"></i> Clear All Windows
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Right Column - Quote -->
-            <div class="quote-section">
-                <h2>Your Window Quote</h2>
-                
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="action-col"></th>
-                            <th class="series-col">Series</th>
-                            <th class="area-col">Area</th>
-                            <th class="quantity-col">Qty</th>
-                            <th class="price-col">Price/m²</th>
-                            <th class="total-col">Total</th>
-                        </tr>
-                    </thead>
-                    <tbody id="quote-items">
-                        <!-- Window items will be added here dynamically -->
-                    </tbody>
-                </table>
-                
-                <div class="total-cost">
-                    <h3>Total Estimated Cost</h3>
-                    <div class="cost" id="total-cost">$0.00</div>
                 </div>
             </div>
         </div>
