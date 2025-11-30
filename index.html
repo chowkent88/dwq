@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conch Canada - Window Quote Calculator</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -11,7 +11,6 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            -webkit-tap-highlight-color: transparent;
         }
         
         body {
@@ -19,7 +18,6 @@
             color: #333;
             line-height: 1.6;
             overflow-x: hidden;
-            -webkit-text-size-adjust: 100%;
         }
         
         .container {
@@ -99,7 +97,7 @@
             padding: 0 15px;
         }
         
-        /* Main Content */
+        /* Main Content - FIXED TWO-COLUMN LAYOUT */
         .main-content {
             display: grid;
             grid-template-columns: 1fr;
@@ -144,10 +142,6 @@
             cursor: pointer;
             transition: all 0.3s ease;
             width: 100%;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
         }
         
         .series-option:hover {
@@ -220,9 +214,6 @@
             border-radius: 4px;
             font-size: 1rem;
             transition: border 0.3s;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
         }
         
         .input-group input:focus {
@@ -245,9 +236,6 @@
             transition: background 0.3s;
             margin-top: 10px;
             text-align: center;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
         }
         
         .btn:hover {
@@ -278,7 +266,6 @@
             box-shadow: 0 3px 15px rgba(0,0,0,0.08);
             width: 100%;
             overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
         }
         
         .quote-section h2 {
@@ -372,9 +359,6 @@
             width: 22px;
             height: 22px;
             margin: 0 auto;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
         }
         
         .delete-btn:hover {
@@ -452,9 +436,9 @@
             font-size: 0.85rem;
         }
         
-        /* Responsive Design */
-        /* Tablet Styles - FIXED FOR IPAD */
-        @media (min-width: 768px) and (max-width: 1024px) {
+        /* Responsive Design - FIXED TWO-COLUMN LAYOUT */
+        /* Tablet Styles */
+        @media (min-width: 768px) {
             .container {
                 padding: 0 20px;
             }
@@ -475,6 +459,7 @@
                 font-size: 1.1rem;
             }
             
+            /* TWO-COLUMN LAYOUT FOR TABLET AND DESKTOP */
             .main-content {
                 grid-template-columns: 1fr 1fr;
                 gap: 30px;
@@ -501,23 +486,10 @@
                 padding: 8px 4px;
                 font-size: 0.8rem;
             }
-            
-            /* iPad-specific fixes */
-            .series-option {
-                padding: 12px 10px;
-            }
-            
-            .input-group input {
-                padding: 10px 12px;
-            }
-            
-            .btn {
-                padding: 12px;
-            }
         }
         
         /* Desktop Styles */
-        @media (min-width: 1025px) {
+        @media (min-width: 992px) {
             .footer-content {
                 grid-template-columns: repeat(3, 1fr);
             }
@@ -565,17 +537,6 @@
             
             .container {
                 padding: 0 10px;
-            }
-        }
-        
-        /* iPad Pro and larger tablet fixes */
-        @media (min-width: 1024px) and (max-width: 1366px) {
-            .container {
-                max-width: 1100px;
-            }
-            
-            .series-option {
-                padding: 14px 12px;
             }
         }
     </style>
@@ -779,7 +740,7 @@
             let selectedType = 'vinyl';
             let windows = [];
             
-            // Event Listeners - FIXED FOR IPAD TOUCH
+            // Event Listeners
             vinylOptions.addEventListener('click', function(e) {
                 const option = e.target.closest('.series-option');
                 if (option) {
@@ -907,10 +868,6 @@
             // Initialize
             renderQuoteItems();
             calculateTotal();
-            
-            // iPad-specific fixes
-            // Prevent zoom on input focus for better UX
-            document.addEventListener('touchstart', function() {}, {passive: true});
         });
     </script>
 </body>
