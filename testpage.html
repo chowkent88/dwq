@@ -293,6 +293,26 @@
             color: #1a3a5f;
         }
         
+        .delete-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 6px 10px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+        }
+        
+        .delete-btn:hover {
+            background: #c0392b;
+        }
+        
         .total-cost {
             text-align: center;
             padding: 20px;
@@ -311,46 +331,6 @@
             font-size: 1.8rem;
             font-weight: bold;
             color: #e74c3c;
-        }
-        
-        .window-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 6px;
-            margin-bottom: 15px;
-        }
-        
-        .window-details {
-            flex: 1;
-        }
-        
-        .window-details h4 {
-            color: #1a3a5f;
-            margin-bottom: 5px;
-        }
-        
-        .window-price {
-            font-weight: bold;
-            color: #e74c3c;
-            margin-right: 15px;
-        }
-        
-        .delete-btn {
-            background: #e74c3c;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            padding: 8px 12px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: background 0.3s;
-        }
-        
-        .delete-btn:hover {
-            background: #c0392b;
         }
         
         .empty-quote {
@@ -628,7 +608,7 @@
                             <th>Quantity</th>
                             <th>Price per m²</th>
                             <th>Total</th>
-                            <th></th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody id="quote-items">
