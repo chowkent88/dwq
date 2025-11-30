@@ -109,7 +109,7 @@
         .window-types {
             background: white;
             border-radius: 8px;
-            padding: 25px 15px; /* Reduced left/right padding */
+            padding: 25px 15px;
             box-shadow: 0 3px 15px rgba(0,0,0,0.08);
             width: 100%;
         }
@@ -131,7 +131,7 @@
         .window-category {
             background: #f8f9fa;
             border-radius: 8px;
-            padding: 20px 15px; /* Reduced left/right padding */
+            padding: 20px 15px;
             border: 1px solid #e9ecef;
         }
         
@@ -190,7 +190,7 @@
         .calculator-quote-container {
             background: white;
             border-radius: 8px;
-            padding: 25px 15px; /* Reduced left/right padding */
+            padding: 25px 15px;
             box-shadow: 0 3px 15px rgba(0,0,0,0.08);
             width: 100%;
         }
@@ -213,7 +213,7 @@
         .measurements-container {
             background: #f8f9fa;
             border-radius: 8px;
-            padding: 20px 15px; /* Reduced left/right padding */
+            padding: 20px 15px;
             border: 1px solid #e9ecef;
         }
         
@@ -250,6 +250,37 @@
             border-radius: 4px;
             font-size: 1rem;
             transition: border 0.3s;
+        }
+        
+        /* Ensure number inputs show spinners on all devices */
+        input[type="number"] {
+            -webkit-appearance: textfield;
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+        
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: inner-spin-button;
+            opacity: 1;
+            height: 30px;
+        }
+        
+        /* Mobile-specific spinner styling */
+        @media (max-width: 768px) {
+            input[type="number"] {
+                -webkit-appearance: none;
+                -moz-appearance: textfield;
+                appearance: none;
+            }
+            
+            input[type="number"]::-webkit-inner-spin-button,
+            input[type="number"]::-webkit-outer-spin-button {
+                -webkit-appearance: inner-spin-button;
+                opacity: 1;
+                height: 40px;
+                width: 30px;
+            }
         }
         
         .input-group input:focus {
@@ -298,7 +329,7 @@
         .quote-container {
             background: #f8f9fa;
             border-radius: 8px;
-            padding: 20px 15px; /* Reduced left/right padding */
+            padding: 20px 15px;
             border: 1px solid #e9ecef;
             overflow-x: auto;
         }
@@ -562,7 +593,7 @@
             }
             
             .window-types, .calculator-quote-container, .window-category, .measurements-container, .quote-container {
-                padding: 15px 10px; /* Further reduced padding on small screens */
+                padding: 15px 10px;
             }
             
             th, td {
@@ -612,7 +643,7 @@
         <div class="main-content">
             <!-- Window Types Container -->
             <div class="window-types">
-                <h2>Select Window Series</h2> <!-- Updated title -->
+                <h2>Select Window Series</h2>
                 <div class="window-categories">
                     <!-- Vinyl Window Options -->
                     <div class="window-category">
@@ -672,7 +703,7 @@
             
             <!-- Combined Measurements and Quote Container -->
             <div class="calculator-quote-container">
-                <h2>Calculate Quote</h2> <!-- Updated title -->
+                <h2>Calculate Quote</h2>
                 <div class="calculator-quote-content">
                     <!-- Measurements Section -->
                     <div class="measurements-container">
@@ -705,7 +736,7 @@
                     
                     <!-- Quote Section -->
                     <div class="quote-container">
-                        <h3>Window Quote</h3> <!-- Updated title -->
+                        <h3>Window Quote</h3>
                         
                         <table>
                             <thead>
