@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Security Test</title>
+</head>
+<body>
+    <h1>Testing Local File Access</h1>
+    <button onclick="testLocalStorage()">Test Storage</button>
+    <button onclick="testAlert()">Test Alert</button>
+    <div id="result"></div>
+
+    <script>
+        function testLocalStorage() {
+            try {
+                localStorage.setItem('test', 'works');
+                document.getElementById('result').innerHTML = 
+                    'LocalStorage: ' + localStorage.getItem('test');
+            } catch (e) {
+                document.getElementById('result').innerHTML = 
+                    'LocalStorage blocked: ' + e.message;
+            }
+        }
+        
+        function testAlert() {
+            alert('JavaScript is working!');
+        }
+        
+        // Auto-test on load
+        setTimeout(testLocalStorage, 1000);
+    </script>
+</body>
+</html>
