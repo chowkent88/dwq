@@ -764,4 +764,173 @@
                 <div class="footer-section">
                     <h3>Contact Us</h3>
                     <p><i class="fas fa-map-marker-alt"></i> 123 Window Street, Toronto, ON</p>
-                    <p><i class="fas fa-phone"></i> <a href="tel
+                    <p><i class="fas fa-phone"></i> <a href="tel:1-800-946-3697">1-800-WINDOWS</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@conchcanada.com">info@conchcanada.com</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#">Our Products</a>
+                    <a href="#">Installation Services</a>
+                    <a href="#">Warranty Information</a>
+                    <a href="#">Contact Us</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 Conch Canada Windows. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const vinylOptions = document.getElementById('vinyl-options');
+            const aluminumOptions = document.getElementById('aluminum-options');
+            const widthInput = document.getElementById('width');
+            const heightInput = document.getElementById('height');
+            const quantityInput = document.getElementById('quantity');
+            const addWindowBtn = document.getElementById('add-window');
+            const clearAllBtn = document.getElementById('clear-all');
+            const quoteItems = document.getElementById('quote-items');
+            const totalCost = document.getElementById('total-cost');
+            
+            // State
+            let selectedSeries = 'es65';
+            let selectedPrice = 85;
+            let selectedType = 'vinyl';
+            let windows = [];
+            
+            // Event Listeners
+            vinylOptions.addEventListener('click', function(e) {
+                const option = e.target.closest('.series-option');
+                if (option) {
+                    // Remove selected class from all vinyl options
+                    document.querySelectorAll('#vinyl-options .series-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Add selected class to clicked option
+                    option.classList.add('selected');
+                    
+                    // Remove selected class from all aluminum options
+                    document.querySelectorAll('#aluminum-options .series-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Update selected series and price
+                    selectedSeries = option.getAttribute('data-series');
+                    selectedPrice = parseFloat(option.getAttribute('data-price'));
+                    selectedType = 'vinyl';
+                }
+            });
+            
+            aluminumOptions.addEventListener('click', function(e) {
+                const option = e.target.closest('.series-option');
+                if (option) {
+                    // Remove selected class from all aluminum options
+                    document.querySelectorAll('#aluminum-options .series-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Add selected class to clicked option
+                    option.classList.add('selected');
+                    
+                    // Remove selected class from all vinyl options
+                    document.querySelectorAll('#vinyl-options .series-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Update selected series and price
+                    selectedSeries = option.getAttribute('data-series');
+                    selectedPrice = parseFloat(option.getAttribute('data-price'));
+                    selectedType = 'aluminum';
+                }
+            });
+            
+            addWindowBtn.addEventListener('click', addWindowToQuote);
+            clearAllBtn.addEventListener('click', clearAllWindows);
+            
+            // Functions
+            function addWindowToQuote() {
+                const width = parseFloat(widthInput.value);
+                const height = parseFloat(heightInput.value);
+                const quantity = parseInt(quantityInput.value);
+                
+                if (isNaN(width) || isNaN(height) || isNaN(quantity) || width <= 0 || height <= 0 || quantity <= 0) {
+                    alert('Please enter valid measurements and quantity');
+                    return;
+                }
+                
+                const area = width * height;
+                const total = area * selectedPrice * quantity;
+                
+                const window = {
+                    type: selectedType,
+                    series: selectedSeries.toUpperCase(),
+                    width: width.toFixed(2),
+                    height: height.toFixed(2),
+                    area: area.toFixed(2),
+                    quantity: quantity,
+                    pricePerM2: selectedPrice,
+                    total: total.toFixed(2)
+                };
+                
+                windows.push(window);
+                renderQuoteItems();
+                calculateTotal();
+            }
+            
+            function renderQuoteItems() {
+                if (windows.length === 0) {
+                    quoteItems.innerHTML = '<tr><td colspan="6" class="empty-quote">No windows added to quote yet</td></tr>';
+                    return;
+                }
+                
+                quoteItems.innerHTML = '';
+                
+                windows.forEach((window, index) => {
+                    const row = document.createElement('tr');
+                    
+                    row.innerHTML = `
+                        <td class="action-col"><button class="delete-btn" data-index="${index}"><i class="fas fa-times"></i></button></td>
+                        <td class="series-col">${window.series}</td>
+                        <td class="area-col">${window.area} m²</td>
+                        <td class="quantity-col">${window.quantity}</td>
+                        <td class="price-col">$${window.pricePerM2.toFixed(2)}</td>
+                        <td class="total-col">$${window.total}</td>
+                    `;
+                    
+                    quoteItems.appendChild(row);
+                });
+                
+                // Add event listeners to delete buttons
+                document.querySelectorAll('.delete-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        windows.splice(index, 1);
+                        renderQuoteItems();
+                        calculateTotal();
+                    });
+                });
+            }
+            
+            function calculateTotal() {
+                const total = windows.reduce((sum, window) => sum + parseFloat(window.total), 0);
+                totalCost.textContent = `$${total.toFixed(2)}`;
+            }
+            
+            function clearAllWindows() {
+                windows = [];
+                renderQuoteItems();
+                calculateTotal();
+            }
+            
+            // Initialize
+            renderQuoteItems();
+            calculateTotal();
+        });
+    </script>
+</body>
+</html>
