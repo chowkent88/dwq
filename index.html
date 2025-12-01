@@ -325,6 +325,14 @@
             background: #219653;
         }
         
+        .btn-primary {
+            background: #3498db;
+        }
+        
+        .btn-primary:hover {
+            background: #2980b9;
+        }
+        
         /* Quote Section */
         .quote-container {
             background: #f8f9fa;
@@ -730,7 +738,7 @@
                             <i class="fas fa-plus-circle"></i> Add Window to Quote
                         </button>
                         <button class="btn btn-danger" id="clear-all">
-                            <i class="fas fa-trash-alt"></i> Clear All Windows
+                            <i class="fas fa-trash-alt"></i> Clear Quote
                         </button>
                     </div>
                     
@@ -758,6 +766,11 @@
                             <h3>Total Estimated Cost</h3>
                             <div class="cost" id="total-cost">$0.00</div>
                         </div>
+                        
+                        <!-- Send Quote Button -->
+                        <button class="btn btn-primary" id="send-quote">
+                            <i class="fas fa-paper-plane"></i> Send Quote via Email
+                        </button>
                     </div>
                 </div>
             </div>
@@ -805,6 +818,7 @@
             const quantityInput = document.getElementById('quantity');
             const addWindowBtn = document.getElementById('add-window');
             const clearAllBtn = document.getElementById('clear-all');
+            const sendQuoteBtn = document.getElementById('send-quote');
             const quoteItems = document.getElementById('quote-items');
             const totalCost = document.getElementById('total-cost');
             
@@ -863,6 +877,7 @@
             
             addWindowBtn.addEventListener('click', addWindowToQuote);
             clearAllBtn.addEventListener('click', clearAllWindows);
+            sendQuoteBtn.addEventListener('click', sendQuote);
             
             // Functions
             function addWindowToQuote() {
@@ -937,6 +952,40 @@
                 windows = [];
                 renderQuoteItems();
                 calculateTotal();
+            }
+            
+            function sendQuote() {
+                if (windows.length === 0) {
+                    alert('Please add at least one window to the quote before sending.');
+                    return;
+                }
+                
+                // Create email content
+                let emailBody = "Window Quote Request from Conch Canada Windows\n\n";
+                emailBody += "Window Details:\n";
+                emailBody += "================================\n\n";
+                
+                windows.forEach((window, index) => {
+                    emailBody += `Window ${index + 1}:\n`;
+                    emailBody += `- Series: ${window.series}\n`;
+                    emailBody += `- Dimensions: ${window.width}m x ${window.height}m\n`;
+                    emailBody += `- Area: ${window.area} m²\n`;
+                    emailBody += `- Quantity: ${window.quantity}\n`;
+                    emailBody += `- Price per m²: $${window.pricePerM2.toFixed(2)}\n`;
+                    emailBody += `- Total: $${window.total}\n\n`;
+                });
+                
+                emailBody += "================================\n";
+                emailBody += `GRAND TOTAL: ${totalCost.textContent}\n\n`;
+                emailBody += "Thank you for your interest in Conch Canada Windows!\n";
+                emailBody += "We will contact you shortly to discuss your window requirements.";
+                
+                // Create mailto link
+                const subject = "Window Quote Request - Conch Canada Windows";
+                const mailtoLink = `mailto:info@conchcanada.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+                
+                // Open email client
+                window.location.href = mailtoLink;
             }
             
             // Initialize
