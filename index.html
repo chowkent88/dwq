@@ -55,6 +55,12 @@
             color: #2c5a8a;
         }
         
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
         .contact-info {
             display: flex;
             gap: 15px;
@@ -81,6 +87,28 @@
         
         .contact-item i {
             color: #2c5a8a;
+        }
+        
+        .language-selector {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .lang-btn {
+            padding: 6px 12px;
+            border: 1px solid #ced4da;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+        
+        .lang-btn.active {
+            background: #2c5a8a;
+            color: white;
+            border-color: #2c5a8a;
         }
         
         /* Hero Section */
@@ -588,6 +616,12 @@
                 text-align: center;
             }
             
+            .header-right {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
             .contact-info {
                 justify-content: center;
             }
@@ -622,16 +656,22 @@
             <div class="header-content">
                 <div class="logo">
                     <i class="fas fa-home fa-2x" style="color: #2c5a8a;"></i>
-                    <h1>Conch Canada Windows</h1>
+                    <h1 id="company-name">Conch Canada Windows</h1>
                 </div>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <a href="tel:1-800-946-3697">1-800-WINDOWS</a>
+                <div class="header-right">
+                    <div class="language-selector">
+                        <button class="lang-btn active" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="zh">中文</button>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:info@conchcanada.com">info@conchcanada.com</a>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:1-800-946-3697">1-800-WINDOWS</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@conchcanada.com">info@conchcanada.com</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -641,8 +681,8 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h2>Premium Window Solutions</h2>
-            <p>Get an instant quote for our high-quality vinyl and aluminum window systems</p>
+            <h2 id="hero-title">Premium Window Solutions</h2>
+            <p id="hero-subtitle">Get an instant quote for our high-quality vinyl and aluminum window systems</p>
         </div>
     </section>
 
@@ -651,58 +691,58 @@
         <div class="main-content">
             <!-- Window Types Container -->
             <div class="window-types">
-                <h2>Select Window Series</h2>
+                <h2 id="select-series-title">Select Window Series</h2>
                 <div class="window-categories">
                     <!-- Vinyl Window Options -->
                     <div class="window-category">
-                        <h3>Vinyl Window Series</h3>
+                        <h3 id="vinyl-series-title">Vinyl Window Series</h3>
                         <div class="series-options" id="vinyl-options">
                             <div class="series-option selected" data-series="es65" data-price="85">
                                 <div class="series-name">ES65 Series</div>
                                 <div class="series-price">$85 per m²</div>
-                                <div class="series-features">Standard efficiency, great value</div>
+                                <div class="series-features" data-en="Standard efficiency, great value" data-zh="标准效率，高性价比">Standard efficiency, great value</div>
                             </div>
                             <div class="series-option" data-series="es75" data-price="95">
                                 <div class="series-name">ES75 Series</div>
                                 <div class="series-price">$95 per m²</div>
-                                <div class="series-features">Enhanced insulation, mid-range</div>
+                                <div class="series-features" data-en="Enhanced insulation, mid-range" data-zh="增强保温，中端系列">Enhanced insulation, mid-range</div>
                             </div>
                             <div class="series-option" data-series="es80" data-price="110">
                                 <div class="series-name">ES80 Series</div>
                                 <div class="series-price">$110 per m²</div>
-                                <div class="series-features">Premium efficiency, triple pane ready</div>
+                                <div class="series-features" data-en="Premium efficiency, triple pane ready" data-zh="高端效率，支持三层玻璃">Premium efficiency, triple pane ready</div>
                             </div>
                             <div class="series-option" data-series="es90" data-price="130">
                                 <div class="series-name">ES90 Series</div>
                                 <div class="series-price">$130 per m²</div>
-                                <div class="series-features">Maximum performance, commercial grade</div>
+                                <div class="series-features" data-en="Maximum performance, commercial grade" data-zh="最大性能，商用级别">Maximum performance, commercial grade</div>
                             </div>
                         </div>
                     </div>
                     
                     <!-- Aluminum Window Options -->
                     <div class="window-category">
-                        <h3>Aluminum Window Series</h3>
+                        <h3 id="aluminum-series-title">Aluminum Window Series</h3>
                         <div class="series-options" id="aluminum-options">
                             <div class="series-option" data-series="cn75" data-price="120">
                                 <div class="series-name">CN75 Series</div>
                                 <div class="series-price">$120 per m²</div>
-                                <div class="series-features">Standard commercial, slim profile</div>
+                                <div class="series-features" data-en="Standard commercial, slim profile" data-zh="标准商用，纤薄型材">Standard commercial, slim profile</div>
                             </div>
                             <div class="series-option" data-series="cn85" data-price="140">
                                 <div class="series-name">CN85 Series</div>
                                 <div class="series-price">$140 per m²</div>
-                                <div class="series-features">Enhanced thermal break, mid-range</div>
+                                <div class="series-features" data-en="Enhanced thermal break, mid-range" data-zh="增强断桥，中端系列">Enhanced thermal break, mid-range</div>
                             </div>
                             <div class="series-option" data-series="cn100" data-price="160">
                                 <div class="series-name">CN100 Series</div>
                                 <div class="series-price">$160 per m²</div>
-                                <div class="series-features">High performance, premium residential</div>
+                                <div class="series-features" data-en="High performance, premium residential" data-zh="高性能，高端住宅">High performance, premium residential</div>
                             </div>
                             <div class="series-option" data-series="cn105" data-price="185">
                                 <div class="series-name">CN105 Series</div>
                                 <div class="series-price">$185 per m²</div>
-                                <div class="series-features">Maximum durability, commercial grade</div>
+                                <div class="series-features" data-en="Maximum durability, commercial grade" data-zh="最大耐久性，商用级别">Maximum durability, commercial grade</div>
                             </div>
                         </div>
                     </div>
@@ -711,50 +751,50 @@
             
             <!-- Combined Measurements and Quote Container -->
             <div class="calculator-quote-container">
-                <h2>Calculate Quote</h2>
+                <h2 id="calculate-quote-title">Calculate Quote</h2>
                 <div class="calculator-quote-content">
                     <!-- Measurements Section -->
                     <div class="measurements-container">
-                        <h3>Window Measurements</h3>
+                        <h3 id="measurements-title">Window Measurements</h3>
                         
                         <div class="measurements">
                             <div class="input-group">
-                                <label for="width">Width (meters)</label>
+                                <label for="width" id="width-label">Width (meters)</label>
                                 <input type="number" id="width" min="0.1" step="0.01" value="2.00">
                             </div>
                             
                             <div class="input-group">
-                                <label for="height">Height (meters)</label>
+                                <label for="height" id="height-label">Height (meters)</label>
                                 <input type="number" id="height" min="0.1" step="0.01" value="2.00">
                             </div>
                         </div>
                         
                         <div class="input-group">
-                            <label for="quantity">Quantity</label>
+                            <label for="quantity" id="quantity-label">Quantity</label>
                             <input type="number" id="quantity" min="1" value="1">
                         </div>
                         
                         <button class="btn btn-success" id="add-window">
-                            <i class="fas fa-plus-circle"></i> Add Window to Quote
+                            <i class="fas fa-plus-circle"></i> <span id="add-window-text">Add Window to Quote</span>
                         </button>
                         <button class="btn btn-danger" id="clear-all">
-                            <i class="fas fa-trash-alt"></i> Clear Quote
+                            <i class="fas fa-trash-alt"></i> <span id="clear-all-text">Clear Quote</span>
                         </button>
                     </div>
                     
                     <!-- Quote Section -->
                     <div class="quote-container">
-                        <h3>Window Quote</h3>
+                        <h3 id="quote-title">Window Quote</h3>
                         
                         <table>
                             <thead>
                                 <tr>
                                     <th class="action-col"></th>
-                                    <th class="series-col">Series</th>
-                                    <th class="area-col">Area</th>
-                                    <th class="quantity-col">Qty</th>
-                                    <th class="price-col">Price/m²</th>
-                                    <th class="total-col">Total</th>
+                                    <th class="series-col" id="table-series">Series</th>
+                                    <th class="area-col" id="table-area">Area</th>
+                                    <th class="quantity-col" id="table-quantity">Qty</th>
+                                    <th class="price-col" id="table-price">Price/m²</th>
+                                    <th class="total-col" id="table-total">Total</th>
                                 </tr>
                             </thead>
                             <tbody id="quote-items">
@@ -763,13 +803,13 @@
                         </table>
                         
                         <div class="total-cost">
-                            <h3>Total Estimated Cost</h3>
+                            <h3 id="total-estimated-cost">Total Estimated Cost</h3>
                             <div class="cost" id="total-cost">$0.00</div>
                         </div>
                         
                         <!-- Send Quote Button -->
                         <button class="btn btn-primary" id="send-quote">
-                            <i class="fas fa-paper-plane"></i> Send Quote via Email
+                            <i class="fas fa-paper-plane"></i> <span id="send-quote-text">Send Quote via Email</span>
                         </button>
                     </div>
                 </div>
@@ -782,33 +822,107 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>About Conch Canada</h3>
-                    <p>We provide high-quality window solutions for residential and commercial properties across Canada since 1995.</p>
+                    <h3 id="about-title">About Conch Canada</h3>
+                    <p id="about-text">We provide high-quality window solutions for residential and commercial properties across Canada since 1995.</p>
                 </div>
                 
                 <div class="footer-section">
-                    <h3>Contact Us</h3>
+                    <h3 id="contact-title">Contact Us</h3>
                     <p><i class="fas fa-map-marker-alt"></i> 123 Window Street, Toronto, ON</p>
                     <p><i class="fas fa-phone"></i> <a href="tel:1-800-946-3697">1-800-WINDOWS</a></p>
                     <p><i class="fas fa-envelope"></i> <a href="mailto:info@conchcanada.com">info@conchcanada.com</a></p>
                 </div>
                 
                 <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <a href="#">Our Products</a>
-                    <a href="#">Installation Services</a>
-                    <a href="#">Warranty Information</a>
-                    <a href="#">Contact Us</a>
+                    <h3 id="quick-links-title">Quick Links</h3>
+                    <a href="#" id="products-link">Our Products</a>
+                    <a href="#" id="installation-link">Installation Services</a>
+                    <a href="#" id="warranty-link">Warranty Information</a>
+                    <a href="#" id="contact-link">Contact Us</a>
                 </div>
             </div>
             
             <div class="copyright">
-                &copy; 2023 Conch Canada Windows. All rights reserved.
+                <span id="copyright-text">&copy; 2023 Conch Canada Windows. All rights reserved.</span>
             </div>
         </div>
     </footer>
 
     <script>
+        // Language data
+        const translations = {
+            en: {
+                companyName: "Conch Canada Windows",
+                heroTitle: "Premium Window Solutions",
+                heroSubtitle: "Get an instant quote for our high-quality vinyl and aluminum window systems",
+                selectSeriesTitle: "Select Window Series",
+                vinylSeriesTitle: "Vinyl Window Series",
+                aluminumSeriesTitle: "Aluminum Window Series",
+                calculateQuoteTitle: "Calculate Quote",
+                measurementsTitle: "Window Measurements",
+                widthLabel: "Width (meters)",
+                heightLabel: "Height (meters)",
+                quantityLabel: "Quantity",
+                addWindowText: "Add Window to Quote",
+                clearAllText: "Clear Quote",
+                quoteTitle: "Window Quote",
+                tableSeries: "Series",
+                tableArea: "Area",
+                tableQuantity: "Qty",
+                tablePrice: "Price/m²",
+                tableTotal: "Total",
+                totalEstimatedCost: "Total Estimated Cost",
+                sendQuoteText: "Send Quote via Email",
+                aboutTitle: "About Conch Canada",
+                aboutText: "We provide high-quality window solutions for residential and commercial properties across Canada since 1995.",
+                contactTitle: "Contact Us",
+                quickLinksTitle: "Quick Links",
+                productsLink: "Our Products",
+                installationLink: "Installation Services",
+                warrantyLink: "Warranty Information",
+                contactLink: "Contact Us",
+                copyrightText: "© 2023 Conch Canada Windows. All rights reserved.",
+                emptyQuote: "No windows added to quote yet",
+                alertInvalid: "Please enter valid measurements and quantity",
+                alertEmpty: "Please add at least one window to the quote before sending."
+            },
+            zh: {
+                companyName: "Conch Canada 窗户",
+                heroTitle: "高端窗户解决方案",
+                heroSubtitle: "获取我们高品质塑钢和铝合金窗户系统的即时报价",
+                selectSeriesTitle: "选择窗户系列",
+                vinylSeriesTitle: "塑钢窗系列",
+                aluminumSeriesTitle: "铝合金窗系列",
+                calculateQuoteTitle: "计算报价",
+                measurementsTitle: "窗户测量",
+                widthLabel: "宽度 (米)",
+                heightLabel: "高度 (米)",
+                quantityLabel: "数量",
+                addWindowText: "添加窗户到报价单",
+                clearAllText: "清空报价单",
+                quoteTitle: "窗户报价单",
+                tableSeries: "系列",
+                tableArea: "面积",
+                tableQuantity: "数量",
+                tablePrice: "单价/平方米",
+                tableTotal: "总计",
+                totalEstimatedCost: "总预估费用",
+                sendQuoteText: "通过邮件发送报价单",
+                aboutTitle: "关于 Conch Canada",
+                aboutText: "自1995年以来，我们为加拿大各地的住宅和商业物业提供高品质的窗户解决方案。",
+                contactTitle: "联系我们",
+                quickLinksTitle: "快速链接",
+                productsLink: "我们的产品",
+                installationLink: "安装服务",
+                warrantyLink: "保修信息",
+                contactLink: "联系我们",
+                copyrightText: "© 2023 Conch Canada Windows. 保留所有权利。",
+                emptyQuote: "尚未添加任何窗户到报价单",
+                alertInvalid: "请输入有效的尺寸和数量",
+                alertEmpty: "请在发送前至少添加一个窗户到报价单。"
+            }
+        };
+
         document.addEventListener('DOMContentLoaded', function() {
             // DOM Elements
             const vinylOptions = document.getElementById('vinyl-options');
@@ -821,12 +935,14 @@
             const sendQuoteBtn = document.getElementById('send-quote');
             const quoteItems = document.getElementById('quote-items');
             const totalCost = document.getElementById('total-cost');
+            const langButtons = document.querySelectorAll('.lang-btn');
             
             // State
             let selectedSeries = 'es65';
             let selectedPrice = 85;
             let selectedType = 'vinyl';
             let windows = [];
+            let currentLang = 'en';
             
             // Event Listeners
             vinylOptions.addEventListener('click', function(e) {
@@ -879,6 +995,18 @@
             clearAllBtn.addEventListener('click', clearAllWindows);
             sendQuoteBtn.addEventListener('click', sendQuote);
             
+            // Language switching
+            langButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    switchLanguage(lang);
+                    
+                    // Update active button
+                    langButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
             // Functions
             function addWindowToQuote() {
                 const width = parseFloat(widthInput.value);
@@ -886,7 +1014,7 @@
                 const quantity = parseInt(quantityInput.value);
                 
                 if (isNaN(width) || isNaN(height) || isNaN(quantity) || width <= 0 || height <= 0 || quantity <= 0) {
-                    alert('Please enter valid measurements and quantity');
+                    alert(translations[currentLang].alertInvalid);
                     return;
                 }
                 
@@ -911,7 +1039,7 @@
             
             function renderQuoteItems() {
                 if (windows.length === 0) {
-                    quoteItems.innerHTML = '<tr><td colspan="6" class="empty-quote">No windows added to quote yet</td></tr>';
+                    quoteItems.innerHTML = `<tr><td colspan="6" class="empty-quote">${translations[currentLang].emptyQuote}</td></tr>`;
                     return;
                 }
                 
@@ -956,36 +1084,90 @@
             
             function sendQuote() {
                 if (windows.length === 0) {
-                    alert('Please add at least one window to the quote before sending.');
+                    alert(translations[currentLang].alertEmpty);
                     return;
                 }
                 
                 // Create email content
-                let emailBody = "Window Quote Request from Conch Canada Windows\n\n";
-                emailBody += "Window Details:\n";
+                let emailBody = currentLang === 'en' 
+                    ? "Window Quote Request from Conch Canada Windows\n\n" 
+                    : "Conch Canada Windows 窗户报价请求\n\n";
+                
+                emailBody += currentLang === 'en' ? "Window Details:\n" : "窗户详情:\n";
                 emailBody += "================================\n\n";
                 
                 windows.forEach((window, index) => {
-                    emailBody += `Window ${index + 1}:\n`;
-                    emailBody += `- Series: ${window.series}\n`;
-                    emailBody += `- Dimensions: ${window.width}m x ${window.height}m\n`;
-                    emailBody += `- Area: ${window.area} m²\n`;
-                    emailBody += `- Quantity: ${window.quantity}\n`;
-                    emailBody += `- Price per m²: $${window.pricePerM2.toFixed(2)}\n`;
-                    emailBody += `- Total: $${window.total}\n\n`;
+                    emailBody += currentLang === 'en' ? `Window ${index + 1}:\n` : `窗户 ${index + 1}:\n`;
+                    emailBody += currentLang === 'en' ? `- Series: ${window.series}\n` : `- 系列: ${window.series}\n`;
+                    emailBody += currentLang === 'en' ? `- Dimensions: ${window.width}m x ${window.height}m\n` : `- 尺寸: ${window.width}米 x ${window.height}米\n`;
+                    emailBody += currentLang === 'en' ? `- Area: ${window.area} m²\n` : `- 面积: ${window.area} 平方米\n`;
+                    emailBody += currentLang === 'en' ? `- Quantity: ${window.quantity}\n` : `- 数量: ${window.quantity}\n`;
+                    emailBody += currentLang === 'en' ? `- Price per m²: $${window.pricePerM2.toFixed(2)}\n` : `- 每平方米价格: $${window.pricePerM2.toFixed(2)}\n`;
+                    emailBody += currentLang === 'en' ? `- Total: $${window.total}\n\n` : `- 总计: $${window.total}\n\n`;
                 });
                 
                 emailBody += "================================\n";
-                emailBody += `GRAND TOTAL: ${totalCost.textContent}\n\n`;
-                emailBody += "Thank you for your interest in Conch Canada Windows!\n";
-                emailBody += "We will contact you shortly to discuss your window requirements.";
+                emailBody += currentLang === 'en' 
+                    ? `GRAND TOTAL: ${totalCost.textContent}\n\n` 
+                    : `总计: ${totalCost.textContent}\n\n`;
+                
+                emailBody += currentLang === 'en' 
+                    ? "Thank you for your interest in Conch Canada Windows!\nWe will contact you shortly to discuss your window requirements."
+                    : "感谢您对 Conch Canada Windows 的兴趣！\n我们将很快与您联系，讨论您的窗户需求。";
                 
                 // Create mailto link
-                const subject = "Window Quote Request - Conch Canada Windows";
+                const subject = currentLang === 'en' 
+                    ? "Window Quote Request - Conch Canada Windows" 
+                    : "窗户报价请求 - Conch Canada Windows";
+                
                 const mailtoLink = `mailto:info@conchcanada.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
                 
                 // Open email client
                 window.location.href = mailtoLink;
+            }
+            
+            function switchLanguage(lang) {
+                currentLang = lang;
+                
+                // Update all text elements
+                document.getElementById('company-name').textContent = translations[lang].companyName;
+                document.getElementById('hero-title').textContent = translations[lang].heroTitle;
+                document.getElementById('hero-subtitle').textContent = translations[lang].heroSubtitle;
+                document.getElementById('select-series-title').textContent = translations[lang].selectSeriesTitle;
+                document.getElementById('vinyl-series-title').textContent = translations[lang].vinylSeriesTitle;
+                document.getElementById('aluminum-series-title').textContent = translations[lang].aluminumSeriesTitle;
+                document.getElementById('calculate-quote-title').textContent = translations[lang].calculateQuoteTitle;
+                document.getElementById('measurements-title').textContent = translations[lang].measurementsTitle;
+                document.getElementById('width-label').textContent = translations[lang].widthLabel;
+                document.getElementById('height-label').textContent = translations[lang].heightLabel;
+                document.getElementById('quantity-label').textContent = translations[lang].quantityLabel;
+                document.getElementById('add-window-text').textContent = translations[lang].addWindowText;
+                document.getElementById('clear-all-text').textContent = translations[lang].clearAllText;
+                document.getElementById('quote-title').textContent = translations[lang].quoteTitle;
+                document.getElementById('table-series').textContent = translations[lang].tableSeries;
+                document.getElementById('table-area').textContent = translations[lang].tableArea;
+                document.getElementById('table-quantity').textContent = translations[lang].tableQuantity;
+                document.getElementById('table-price').textContent = translations[lang].tablePrice;
+                document.getElementById('table-total').textContent = translations[lang].tableTotal;
+                document.getElementById('total-estimated-cost').textContent = translations[lang].totalEstimatedCost;
+                document.getElementById('send-quote-text').textContent = translations[lang].sendQuoteText;
+                document.getElementById('about-title').textContent = translations[lang].aboutTitle;
+                document.getElementById('about-text').textContent = translations[lang].aboutText;
+                document.getElementById('contact-title').textContent = translations[lang].contactTitle;
+                document.getElementById('quick-links-title').textContent = translations[lang].quickLinksTitle;
+                document.getElementById('products-link').textContent = translations[lang].productsLink;
+                document.getElementById('installation-link').textContent = translations[lang].installationLink;
+                document.getElementById('warranty-link').textContent = translations[lang].warrantyLink;
+                document.getElementById('contact-link').textContent = translations[lang].contactLink;
+                document.getElementById('copyright-text').textContent = translations[lang].copyrightText;
+                
+                // Update series features
+                document.querySelectorAll('.series-features').forEach(feature => {
+                    feature.textContent = feature.getAttribute(`data-${lang}`);
+                });
+                
+                // Re-render quote items to update empty message if needed
+                renderQuoteItems();
             }
             
             // Initialize
